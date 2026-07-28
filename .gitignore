@@ -1,0 +1,19 @@
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Local operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Generated logs, temporary files and private evidence exports
+*.log
+*.tmp
+artefacts/private/
