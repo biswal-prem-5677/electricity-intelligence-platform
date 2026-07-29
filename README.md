@@ -127,9 +127,12 @@ Artifacts live in [`implementation/`](implementation/). Every one must include i
 
 | Artifact | Closes | Status |
 |---|---|---|
-| [IMPL-01 — Energy Metering AFE Evaluation](implementation/01_energy_meter_ic_evaluation.md) | OPEN-1 | 🟡 Evaluation specified; awaiting measured data |
+| [IMPL-01 — Energy Metering AFE Evaluation](implementation/01_energy_meter_ic_evaluation.md) | OPEN-1 | 🟡 Specified; awaiting measured data |
+| [IMPL-01A — AFE Benchmark Plan](implementation/01A_afe_benchmark_plan.md) | OPEN-4 | 🟡 Ready to execute |
 
-**The first irreversible decision is the metering AFE.** Leading candidate **ADE7816** — two parts cover all 9 channels behind one shared voltage reference, against three parts for every 3-phase-oriented alternative. It is not selected: selection is made from benchmark data, and one datasheet question (per-channel reactive power) may raise an ECR before any board is ordered.
+**The first irreversible decision is the metering AFE.** **ADE7816** is the *preferred hypothesis* — two parts cover all 9 channels behind one shared voltage reference, against three parts for every 3-phase-oriented alternative. It is **not selected.** Selection comes from the benchmark, scored against weights fixed before any data exists.
+
+Four zero-cost checks come first, tracked in [12](12_progress_tracker.md) §4: evaluation-board availability (gating), per-channel reactive power (a possible ECR against PRD-001), written lifecycle status, and whether an accessible EMS can assemble and inspect QFN at prototype volume.
 
 ## Working rules
 

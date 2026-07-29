@@ -56,12 +56,23 @@ Every work item advances through five stages **in order**. A stage is entered on
 | Enclosure | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Calibration procedure + fixture | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **Accuracy ≤ ±2.0% (HWR-003a)** | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Self-consumption ≤3.0 W (HWR-011) | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Environmental envelope (HWR-012) | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Metrology bench + mains safety setup | 🟡 | ❌ | ❌ | ➖ | ❌ |
+| EMS / assembly capability | ❌ | ➖ | ❌ | ❌ | ❌ |
 | EMC | ❌ | ➖ | ❌ | ❌ | ❌ |
 | Safety / classification | ❌ | ➖ | ❌ | ❌ | ❌ |
 
-**Metering AFE — why Evidence is 🟡 and not ✅:** the evaluation is *specified* ([implementation/01_energy_meter_ic_evaluation.md](implementation/01_energy_meter_ic_evaluation.md)) but nothing has been *measured*. Evidence closes when the benchmark report exists, not when the benchmark plan does (R13). Leading candidate ADE7816; **not selected.**
+**Metering AFE — why Evidence is 🟡 and not ✅:** the evaluation is *specified* ([IMPL-01](implementation/01_energy_meter_ic_evaluation.md)) and the benchmark is *procedurally ready* ([IMPL-01A](implementation/01A_afe_benchmark_plan.md)), but nothing has been *measured*. Evidence closes when the benchmark report exists, not when the benchmark plan does (R13). ADE7816 is a **preferred hypothesis awaiting validation** — not the choice.
 
-**⚠ Watch item — potential ECR:** whether the ADE7816 provides per-channel reactive power. PRD-001, CLR-002, the [06](06_cloud_backend_srs.md) §3 frame and MOB-003 all assume `reactivePowerVAR` and `powerFactor`. Resolvable from the datasheet in ~1 day, at zero cost, and it may eliminate a candidate before any board is ordered — **do it first.**
+**Four zero-cost checks come before any purchase.** Each can eliminate a candidate for free, and one of them gates the benchmark existing at all:
+
+| # | Check | Effort | Why first |
+|---|---|---|---|
+| 1 | **Evaluation board in stock, deliverable to India** (A12) | 0.5 day | **Gating.** A part that cannot be benchmarked cannot be selected |
+| 2 | **⚠ Does ADE7816 provide per-channel reactive power?** | 1 day | **Potential ECR.** PRD-001, CLR-002, the [06](06_cloud_backend_srs.md) §3 frame and MOB-003 all assume `reactivePowerVAR` and `powerFactor` |
+| 3 | Lifecycle status in writing ([IMPL-01](implementation/01_energy_meter_ic_evaluation.md) §6) | 2 days | ADE7816 is a mature part. Score <7 needs a migration path |
+| 4 | EMS confirms QFN assembly + inspection ([IMPL-01](implementation/01_energy_meter_ic_evaluation.md) §8) | 1 day | If no accessible EMS can build QFN reliably at 20–50 boards, the leaded alternative gains real value |
 
 ### Firmware
 
@@ -144,7 +155,7 @@ Later-phase task boards are created **when the preceding gate passes**, copied f
 | Group | Count | Implemented | Tested | Validated |
 |---|---|---|---|---|
 | Must-have (M1–M16) | 16 | 0 | 0 | 0 |
-| Hardware (HWR-001…010) | 10 | 0 | 0 | 0 |
+| Hardware (HWR-001…012) | 12 | 0 | 0 | 0 |
 | Metrology (MET-001…006) | 6 | 0 | 0 | 0 |
 | Firmware (FWR-001…013) | 13 | 0 | 0 | 0 |
 | Cloud (CLR-001…010) | 10 | 0 | 0 | 0 |
@@ -152,7 +163,7 @@ Later-phase task boards are created **when the preceding gate passes**, copied f
 | Admin (ADM-001…005) | 5 | 0 | 0 | 0 |
 | Security (SEC-001…008) | 8 | 0 | 0 | 0 |
 | Rules/analytics (AIR-001…008) | 8 | 0 | 0 | 0 |
-| **Total** | **85** | **0** | **0** | **0** |
+| **Total** | **87** | **0** | **0** | **0** |
 
 **Implemented ≠ Tested ≠ Validated.** Tested means it passed in our hands. Validated means it passed against a traceable reference or in a real installation.
 
@@ -180,7 +191,7 @@ Every assumption is a debt. It is closed by evidence, not by repetition.
 | OPEN-1 | Metering AFE part selection — spec'd in [IMPL-01](implementation/01_energy_meter_ic_evaluation.md), awaiting measured data | Gate 1 | HW |
 | OPEN-2 | CT part and second source | Gate 1 | HW |
 | OPEN-3 | MET-006 field CT replacement path | Gate 1 | HW, PM |
-| OPEN-4 | Metrology bench: buy vs rent vs lab hire | Gate 0 | HW, PM |
+| OPEN-4 | Metrology bench: buy vs rent vs lab hire — **recommendation ready** in [IMPL-01A](implementation/01A_afe_benchmark_plan.md) §3 (₹1.4–2.6 L bought, reference meter and chamber hired); awaiting approver | Gate 0 | HW, PM |
 | OPEN-5 | RTOS vs cooperative scheduler | Gate 2 | FW |
 | OPEN-6 | Time-series store: PostgreSQL hypertables vs managed | Gate 4 | BE |
 | OPEN-7 | Final V1 price point | Gate 6 | PM |

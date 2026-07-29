@@ -210,6 +210,23 @@ Roughly a 2,700× difference. The live view is what customers love; always-on it
 
 ---
 
+## D-017 — Self-consumption and environmental envelope become requirements (HWR-011, HWR-012)
+
+**Decided:** [04_hardware_srs.md](04_hardware_srs.md) §2 gains **HWR-011** — device self-consumption ≤3.0 W typical at the AC input, ≤5.0 W peak during radio transmit, stretch ≤2.0 W — and **HWR-012** — operating ambient 0 to +50 °C, storage −20 to +70 °C, 5–95% RH non-condensing, with HWR-003a accuracy holding across that range.
+
+**Why:** both were gaps found while writing [implementation/01_energy_meter_ic_evaluation.md](implementation/01_energy_meter_ic_evaluation.md), and neither could be scored against a candidate part because neither existed.
+
+- **Self-consumption had no requirement at all.** The device is always on and is sold on reducing an electricity bill. At 3 W it draws ~26 kWh/year — roughly ₹210–265/year at commercial tariff, against a claimed saving of ₹14,400–43,200/year. The arithmetic is comfortable; the absence of a measured number was not. "Your energy saver consumes energy" will be asked by a customer, a competitor or a journalist, and the only good answer is a number with a test behind it.
+- **The temperature envelope was referenced but never defined.** HWR-001 and HWR-003a both said "the approved temperature envelope" while no document stated what it was. A requirement that points at an undefined envelope is not testable, which violates R12.
+
+**This is not an ECR.** Nothing frozen changed, no blocker was found, and F1–F8 are untouched. It is a requirement gap closed by amending an existing document, which R25 explicitly prefers over creating a new one.
+
+**Rejected:** leaving self-consumption to be discovered at DVT — the point at which the AFE, the isolated voltage reference and the AC/DC module are already chosen and the budget is no longer allocatable.
+
+**Consequence:** both are now scored criteria in the AFE evaluation (S9, S10) and measured in [implementation/01A_afe_benchmark_plan.md](implementation/01A_afe_benchmark_plan.md) §6.4. Requirement count rises from 85 to 87.
+
+---
+
 ## 2. Frozen architecture decisions F1–F8
 
 Recorded in full in [03_hardware_architecture.md](03_hardware_architecture.md) §3 and governed by D-001.

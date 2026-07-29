@@ -24,6 +24,12 @@ Electrical, mechanical, metrology, PCB and production requirements for **Circuit
 | HWR-008 | Sample at a rate justified by the metrology architecture, with proven alias control | DVT metrology report for the selected AFE/ADC | DVT |
 | HWR-009 | Detect and flag a plausibility failure indicating CT mis-mapping or reversal (e.g. persistent negative residual, branch > mains) | Commissioning test with a deliberately reversed and a deliberately mis-mapped CT | EVT |
 | HWR-010 | Enclosure fits the approved Indian distribution-board types identified in the Phase 0 survey, with strain relief and service access | Physical fit verified in ≥5 real DBs of each approved type | DVT |
+| **HWR-011** | **Device self-consumption ≤ 3.0 W typical at the AC input, ≤ 5.0 W peak during radio transmit.** Stretch: ≤ 2.0 W typical | Measured at the AC input with a reference power analyser, over 24 h with the radio connected and a live session opened, at 180 V / 230 V / 260 V | DVT |
+| **HWR-012** | **Operating ambient 0 to +50 °C, storage −20 to +70 °C, 5–95% RH non-condensing**, at the enclosure exterior inside a closed distribution board. Accuracy per HWR-003a holds across this range | Chamber test at ≥3 temperature points, plus the modelled and thermocouple-validated internal rise required by §7 | DVT |
+
+**HWR-011 and HWR-012 were added during Phase 1** ([D-017](14_decision_log.md#d-017)). Both were gaps, not changes: HWR-001 and HWR-003a already referred to "the approved temperature envelope" without anywhere defining it, and self-consumption had no requirement at all.
+
+**Why self-consumption is a requirement and not a detail.** The device is always on and it is sold on the basis of reducing an electricity bill. At 3 W it draws ~26 kWh/year, roughly **₹210–265/year** at commercial tariff, against a claimed saving of ₹14,400–43,200/year — under 2% of the benefit. That arithmetic is fine, and it must be *available on demand*, because the question "your energy saver consumes energy?" will be asked by a customer, a competitor or a journalist, and the only good answer is a measured number. It also constrains component selection directly: an AFE's supply current, the isolated voltage reference's burden and the AC/DC module's efficiency at a few watts are now scored, not assumed.
 
 ## 3. Metrology and calibration
 
