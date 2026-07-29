@@ -1,49 +1,128 @@
 # 12 — Progress Tracker
 
-**Document ID:** EIP-12 · **Version:** 1.0 · **Status:** Living document — update weekly · **Owner:** Founder / Execution lead
+**Document ID:** EIP-12 · **Version:** 1.1 · **Status:** Living document — update weekly · **Owner:** Founder / Execution lead
 
 ---
 
 ## 1. How to use this
 
-This is the **only** status document. Update it every week. A task is `Done` only when its completion criterion in [11_project_plan.md](11_project_plan.md) is met with evidence — not when it feels finished. **Percentages are banned.** A task is Not started, In progress, Blocked, or Done.
+This is the **only** status document. Update it every week.
 
-## 2. Overall position
+**Percentages are banned** (R22). "60% done" on a hardware project means nothing — a board that is 95% laid out and 0% verified is worth less than one that is 40% laid out with the isolation calculations signed. Progress is reported as **which evidence stage an item has reached**, because that is the thing that actually changes.
+
+## 2. The five stages
+
+Every work item advances through five stages **in order**. A stage is entered only when the previous one is ✅.
+
+| Stage | Question it answers | Closed by |
+|---|---|---|
+| **Evidence** | Do we know enough to design this? Measured data, survey results, a written opinion, a benchmark | A document or dataset someone else could check |
+| **Implementation** | Does the thing exist? Schematic, layout, code, service, screen | An artifact in the repo or on a bench |
+| **Testing** | Does it work in our hands, under our conditions? | A test report with a verdict |
+| **Validation** | Does it work in the real world — real panel, real installer, real customer, traceable reference? | Field or traceable-lab evidence |
+| **Done** | Released, with every claim reviewed and every requirement's evidence current | Gate sign-off by a named approver |
+
+**Status marks:** ✅ complete · 🟡 in progress · ❌ not started · ⛔ blocked · ➖ not applicable
+
+**The rule that gives this teeth:** an item cannot be marked ✅ at a stage because it feels finished. It is ✅ when the closing artifact in the right-hand column above exists and is findable. Anything else is 🟡 (R13).
+
+## 3. Overall position
 
 | | |
 |---|---|
-| **Current phase** | Phase 0 — Architecture Freeze and Reality Check |
+| **Current phase** | Phase 0 — Bench Prototype tier |
+| **Funding tier** | Tier 1 (₹0.5–2 L) — self-fundable |
 | **Next gate** | 🚦 Gate 0 |
 | **Gate 0 target date** | _set at kickoff_ |
-| **Spend to date** | ₹0 of ₹41–94 L |
+| **Spend to date** | ₹0 of ₹0.5–2 L for this tier |
 | **Top risk right now** | **R-13 — will 9 CTs physically fit in a real Indian distribution board?** |
 | **Architecture status** | 🔒 Frozen ([03](03_hardware_architecture.md)) |
+| **Planning status** | 🔒 Frozen — project is in Implementation Engineering ([00](00_execution_principles.md) §VII) |
 
-## 3. Gate status
+## 4. Workstream board
 
-| Gate | Meaning | Status | Evidence location |
-|---|---|---|---|
-| 🚦 G0 | Reality check passed; architecture frozen | ⬜ Not started | |
-| 🚦 G1 | Components selected from measured data | ⬜ | |
-| 🚦 G2 | EVT hardware works | ⬜ | |
-| 🚦 G3 | Firmware feature-complete | ⬜ | |
-| 🚦 G4 | End-to-end pilot-ready | ⬜ | |
-| 🚦 G5 | **Accuracy and safety proven** | ⬜ | |
-| 🚦 G6 | **Pilot proves payback** | ⬜ | |
-| 🚦 G7 | Commercial release criteria met | ⬜ | |
+### Hardware
 
-Legend: ⬜ Not started · 🟡 In progress · 🔴 Blocked · ✅ Passed
+| Item | Evidence | Implementation | Testing | Validation | Done |
+|---|---|---|---|---|---|
+| DB survey (≥30 boards) | ❌ | ➖ | ➖ | ➖ | ❌ |
+| CT selection | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Metering AFE selection | ❌ | ❌ | ❌ | ❌ | ❌ |
+| MCU module / flash / secure element | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Isolated voltage reference | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Isolation architecture | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Schematic | ❌ | ❌ | ❌ | ❌ | ❌ |
+| PCB layout | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Enclosure | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Calibration procedure + fixture | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Accuracy ≤ ±2.0% (HWR-003a)** | ❌ | ❌ | ❌ | ❌ | ❌ |
+| EMC | ❌ | ➖ | ❌ | ❌ | ❌ |
+| Safety / classification | ❌ | ➖ | ❌ | ❌ | ❌ |
 
-## 4. Phase 0 task board
+### Firmware
+
+| Item | Evidence | Implementation | Testing | Validation | Done |
+|---|---|---|---|---|---|
+| Metrology driver + aggregation | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Packed binary journal (7-day) | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Secure boot + signed OTA | ❌ | ❌ | ❌ | ❌ | ❌ |
+| BLE commissioning | ❌ | ❌ | ❌ | ❌ | ❌ |
+| MQTT bundled + session-gated live | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Clock discipline / outage journal | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### Cloud
+
+| Item | Evidence | Implementation | Testing | Validation | Done |
+|---|---|---|---|---|---|
+| Ingest + validation + quarantine | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Device registry + OTA cohorts | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Residual channel + PQ log | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Rules engine (AIR-001…008) | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Security + tenant isolation | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Runbooks (×6) | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### Mobile
+
+| Item | Evidence | Implementation | Testing | Validation | Done |
+|---|---|---|---|---|---|
+| Installer commissioning flow | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Daily-use screens + residual + PQ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Alerts + notifications | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Admin surface (5 capabilities) | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+### Commercial
+
+| Item | Evidence | Implementation | Testing | Validation | Done |
+|---|---|---|---|---|---|
+| Segment validation (D-002) | ❌ | ➖ | ➖ | ❌ | ❌ |
+| Pricing / willingness to pay | ❌ | ➖ | ➖ | ❌ | ❌ |
+| **Verified customer payback** | ❌ | ➖ | ➖ | ❌ | ❌ |
+| Installer network | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Support / RMA / warranty process | ❌ | ❌ | ❌ | ❌ | ❌ |
+
+## 5. Gate status
+
+| Gate | Meaning | Tier | Status | Evidence location |
+|---|---|---|---|---|
+| 🚦 G0 | Reality check passed; architecture frozen | 1 | ❌ | |
+| 🚦 G1 | Components selected from measured data | 2 | ❌ | |
+| 🚦 G2 | EVT hardware works | 3 | ❌ | |
+| 🚦 G3 | Firmware feature-complete | 3 | ❌ | |
+| 🚦 G4 | End-to-end pilot-ready | 3 | ❌ | |
+| 🚦 G5 | **Accuracy and safety proven** | 4 | ❌ | |
+| 🚦 G6 | **Pilot proves payback** | 4 | ❌ | |
+| 🚦 G7 | Commercial release criteria met | 5 | ❌ | |
+
+## 6. Phase 0 task board
 
 | # | Task | Owner | Status | Evidence | Note |
 |---|---|---|---|---|---|
-| 0.1 | DB survey, ≥30 boards | PM, HW | ⬜ | | Highest-value task in the project |
-| 0.2 | 15–20 segment interviews | PM | ⬜ | | |
-| 0.3 | Regulatory classification opinion | PM, EXT | ⬜ | | Longest lead time — **start on day 1** |
-| 0.4 | Metrology bench decision | HW, PM | ⬜ | | |
-| 0.5 | Off-the-shelf bench proof | HW | ⬜ | | |
-| 0.6 | Freeze architecture and scope | PM, HW | ⬜ | | |
+| 0.1 | DB survey, ≥30 boards | PM, HW | ❌ | | Highest-value task in the project |
+| 0.2 | 15–20 segment interviews | PM | ❌ | | |
+| 0.3 | Regulatory classification opinion | PM, EXT | ❌ | | Longest lead time — **start on day 1** |
+| 0.4 | Metrology bench decision | HW, PM | ❌ | | |
+| 0.5 | Off-the-shelf bench proof | HW | ❌ | | |
+| 0.6 | Freeze architecture and scope | PM, HW | ❌ | | |
 
 ### Gate 0 checklist
 
@@ -54,28 +133,43 @@ Legend: ⬜ Not started · 🟡 In progress · 🔴 Blocked · ✅ Passed
 - [ ] Committed path to a traceable reference, with dates
 - [ ] [03](03_hardware_architecture.md) and [02](02_product_requirements.md) signed
 
-## 5. Later-phase boards
+Later-phase task boards are created **when the preceding gate passes**, copied from [11_project_plan.md](11_project_plan.md). Maintaining eight empty boards is documentation work, not execution work (R18).
 
-Phases 1–7 task boards are created **when the preceding gate passes**, copied from [11_project_plan.md](11_project_plan.md). Maintaining eight empty boards is documentation work, not execution work.
+## 7. Requirement coverage
 
-## 6. Requirement coverage
+| Group | Count | Implemented | Tested | Validated |
+|---|---|---|---|---|
+| Must-have (M1–M16) | 16 | 0 | 0 | 0 |
+| Hardware (HWR-001…010) | 10 | 0 | 0 | 0 |
+| Metrology (MET-001…006) | 6 | 0 | 0 | 0 |
+| Firmware (FWR-001…013) | 13 | 0 | 0 | 0 |
+| Cloud (CLR-001…010) | 10 | 0 | 0 | 0 |
+| Mobile (MOB-001…009) | 9 | 0 | 0 | 0 |
+| Admin (ADM-001…005) | 5 | 0 | 0 | 0 |
+| Security (SEC-001…008) | 8 | 0 | 0 | 0 |
+| Rules/analytics (AIR-001…008) | 8 | 0 | 0 | 0 |
+| **Total** | **85** | **0** | **0** | **0** |
 
-| Group | Count | Implemented | Verified |
-|---|---|---|---|
-| Must-have (M1–M16) | 16 | 0 | 0 |
-| Hardware (HWR-001…010) | 10 | 0 | 0 |
-| Metrology (MET-001…006) | 6 | 0 | 0 |
-| Firmware (FWR-001…013) | 13 | 0 | 0 |
-| Cloud (CLR-001…010) | 10 | 0 | 0 |
-| Mobile (MOB-001…009) | 9 | 0 | 0 |
-| Admin (ADM-001…005) | 5 | 0 | 0 |
-| Security (SEC-001…008) | 8 | 0 | 0 |
-| Rules/analytics (AIR-001…008) | 8 | 0 | 0 |
-| **Total** | **85** | **0** | **0** |
+**Implemented ≠ Tested ≠ Validated.** Tested means it passed in our hands. Validated means it passed against a traceable reference or in a real installation.
 
-**Implemented ≠ Verified.** Verified means a test case in [08](08_testing_validation.md) passed with evidence recorded.
+## 8. Assumption ledger (R11)
 
-## 7. Open decisions awaiting closure
+Every assumption is a debt. It is closed by evidence, not by repetition.
+
+| ID | Assumption | Load-bearing for | Closes at | Status |
+|---|---|---|---|---|
+| A-1 | Customers act on data and save ~8% | D-002 payback model, the entire commercial case | G6 | ❌ Open |
+| A-2 | 9 CTs physically fit in ≥70% of target DBs | The product existing at all | G0 | ❌ Open |
+| A-3 | ±2.0% is achievable with low-cost split-core CTs + calibration | D-003, every published claim | G5 | ❌ Open |
+| A-4 | Certification path costs ≤ ₹10 L | Funding tiers 4–5 | G0 | ❌ Open |
+| A-5 | An ordinary electrician can commission in ≤90 min | Install economics, R-11 | G4 | ❌ Open |
+| A-6 | Cloud cost ₹8–25/device/month under D-004 | Unit economics | G4 | ❌ Open |
+| A-7 | Small commercial sites will pay ~₹12,000 + install | Pricing, revenue model | G6 | ❌ Open |
+| A-8 | Second sources exist for every critical part | R-09, supply resilience | G1 | ❌ Open |
+
+**A-1 and A-2 are the two that can end the project.** Both are answered in Tier 1, for under ₹2 lakh combined. That is not an accident — it is R2.
+
+## 9. Open decisions awaiting closure
 
 | ID | Decision | Needed by | Owner |
 |---|---|---|---|
@@ -90,19 +184,21 @@ Phases 1–7 task boards are created **when the preceding gate passes**, copied 
 
 Closed decisions move to [14_decision_log.md](14_decision_log.md).
 
-## 8. Weekly update format
+## 10. Weekly update format
 
 ```
 Week of ____
-Phase: __        Gate: __        Status: on track | at risk | slipped
-Done this week:
-Blocked:
+Phase: __   Gate: __   Funding tier: __   Status: on track | at risk | slipped
+
+Stage advances this week:   (item, stage entered, closing artifact)
+Blocked:                    (item, what is blocking, who can unblock)
+Assumptions closed:         (A-n, evidence)
 Decisions needed from me:
-Spend this week: ₹____    Cumulative: ₹____
+Spend this week: ₹____   Tier cumulative: ₹____ of ₹____
 Top risk change:
 ```
 
-## 9. Scope-change log
+## 11. Scope-change log (R9)
 
 Any addition to V1 scope is recorded here **with what it removes.** An addition with no removal is a schedule slip that has not been admitted yet.
 

@@ -7,7 +7,7 @@
 
 ## 1. Scope freeze
 
-The V1 feature set below is **frozen**. A new feature enters V1 only if it solves a critical engineering or safety problem — not because it is valuable, not because it is cheap, and not because a customer asked. Everything else goes to [15_future_roadmap.md](15_future_roadmap.md).
+The V1 feature set below is **frozen**. A new feature enters V1 only if it solves a critical engineering or safety problem — not because it is valuable, not because it is cheap, and not because a customer asked. Everything else goes to [future/README.md](future/README.md).
 
 Adding a feature to V1 requires: a written statement of which V1 feature it *replaces*, approval recorded in [14_decision_log.md](14_decision_log.md), and a schedule impact stated in [11_project_plan.md](11_project_plan.md).
 

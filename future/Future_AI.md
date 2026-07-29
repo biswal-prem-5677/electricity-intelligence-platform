@@ -1,6 +1,6 @@
 # Future — Long-Horizon Intelligence Direction
 
-**Status:** Parked. Governed by [../15_future_roadmap.md](../15_future_roadmap.md).
+**Status:** Parked. Governed by [README.md](README.md).
 **Sits after:** [AI_V2.md](AI_V2.md), which covers the first wave of analytics. This document covers what comes after that.
 
 ---

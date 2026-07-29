@@ -138,6 +138,64 @@ Roughly a 2,700× difference. The live view is what customers love; always-on it
 
 ---
 
+---
+
+## D-011 — Execution principles become constitutional
+
+**Decided:** [00_execution_principles.md](00_execution_principles.md) is created as the project's constitution — 24 rules (R1–R24). Where any other document conflicts with it, the principles win and the other document is corrected.
+
+**Why:** the decisions in this log are individually sound and collectively fragile. Each was made calmly; each will be tested on a day when the demo is close and the shortcut looks harmless. A rule written down in advance is the only thing that survives that day. The rules also make the *reasoning* portable — a new engineer can infer why a decision was made without reading twelve documents.
+
+**Rejected:** leaving the principles distributed across the documents where they were first stated. They were unenforceable there because nobody knew the complete set.
+
+**Cost to reverse:** amending a rule requires a logged decision with a named approver. That friction is the feature.
+
+---
+
+## D-012 — Five funding tiers replace a single project budget
+
+**Decided:** the ₹41–94 lakh figure is reclassified as the **Commercial MVP** cost, not "the budget." Spend is structured in five tiers, each with its own go/no-go: Bench Prototype (₹0.5–2 L) → Engineering Prototype (₹3–8 L) → EVT (₹9–19 L) → DVT + Pilot (₹13–28 L) → Commercial MVP (₹15–35 L).
+
+**Why:** a single large total makes the project look like it needs external capital to *begin*, which is false and is a common reason hardware projects never start. The first tier is self-fundable and carries the two questions that can kill the project — do the CTs fit, and can we measure at all. The tiers also separate what a competent engineer can do on a bench from what requires an EMS, a lab and someone else's money.
+
+**Rejected:** presenting a single project cost; front-loading capital before the fatal unknowns are retired.
+
+**Consequence:** raises are timed against **Gate 1** (measured accuracy from selected parts) and **Gate 5** (traceable metrology and safety evidence) — the two moments the project becomes materially more fundable. Recorded in [10_bom_and_cost.md](10_bom_and_cost.md) §1a and R23.
+
+---
+
+## D-013 — Progress is reported by evidence stage, never by percentage
+
+**Decided:** [12_progress_tracker.md](12_progress_tracker.md) tracks every item through **Evidence → Implementation → Testing → Validation → Done**, with ✅ / 🟡 / ❌ / ⛔ per stage. Percentage completion is banned as a progress measure.
+
+**Why:** "60% done" is meaningless on a hardware project and is actively misleading. A board 95% laid out with no isolation calculations is worth less than one 40% laid out with them signed. Stage tracking also exposes the failure mode this project is most prone to — implementation racing ahead of evidence, which is exactly what R1 exists to prevent.
+
+**Consequence:** an assumption ledger (A-1…A-8) was added, because "Evidence ❌" needed somewhere to name *which* evidence is missing and when it closes. Recorded in R11 and R22.
+
+---
+
+## D-014 — Planning is frozen; the project enters Implementation Engineering
+
+**Decided:** the 15 core documents are the **complete** planning set. No further planning documents will be written; they are now maintained, not extended. Every new file from this point must be an implementation artifact that lets someone act: select a component, start a schematic, write code, stand up a service, or run a test (R18).
+
+**Sequence:** component selection → hardware block diagrams → electrical schematics → PCB design → firmware → cloud backend → mobile application → bench testing → field pilot.
+
+**Why:** the bottleneck has moved. It is no longer *what should we build* — that is answered and frozen. It is *how do we build the first working unit*. Continuing to produce architecture documents past this point is the most comfortable way to avoid the harder work, and it consumes the only genuinely scarce resource, which is engineering attention.
+
+**Rejected:** further elaboration of the specification suite; a detailed V2 plan; any documentation of parked capabilities beyond what `future/` already holds.
+
+---
+
+## D-015 — `15_future_roadmap.md` becomes the `future/` folder
+
+**Decided:** the roadmap document is removed from the core numbered set and becomes [future/README.md](future/README.md), joined by staged views `V2.md`, `V3.md` and `Moonshots.md`. The core set is renumbered **00–14** and remains 15 documents.
+
+**Why:** a "Future Roadmap" sitting in the main document list still reads as *something to keep reading*. A folder reads as *somewhere else*. The parked list is larger and more exciting than the V1 list and will pull attention away from the work that ships unless it is physically separated. This is a psychological control, and it is deliberate.
+
+**Rejected:** keeping the roadmap in the numbered core set; deleting the parked material outright.
+
+---
+
 ## 2. Frozen architecture decisions F1–F8
 
 Recorded in full in [03_hardware_architecture.md](03_hardware_architecture.md) §3 and governed by D-001.

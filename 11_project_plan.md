@@ -11,7 +11,7 @@
 
 ## 2. Rules that govern this plan
 
-1. **The governing rule.** If a document, feature or task does not directly help us build, test, validate or launch V1, it must not block V1. It goes to [15_future_roadmap.md](15_future_roadmap.md).
+1. **The governing rule.** If a document, feature or task does not directly help us build, test, validate or launch V1, it must not block V1. It goes to [future/README.md](future/README.md).
 2. **No phase starts before its predecessor's gate passes.** Gates have measurable criteria, never a percentage.
 3. **The architecture is frozen** ([03](03_hardware_architecture.md)). Reopening it requires a logged decision with named approver, schedule impact and cost impact.
 4. **Money is spent in the order of risk retirement.** The cheapest experiments that can kill the project run first.
@@ -248,8 +248,18 @@ Gates:   G0    G1      G2  G3  G4      G5      G6          G7
 | 7 | 15–35 L |
 | **Total** | **₹41 L – 94 L** |
 
+> **This total is the Commercial MVP figure, not the entry price (R23).** It is spent across five funding tiers with separate go/no-go points — the first costs **under ₹2 lakh** and is self-fundable. See [10_bom_and_cost.md](10_bom_and_cost.md) §1a.
+
+| Tier | Phases | Cost | Ends at |
+|---|---|---|---|
+| 1 — Bench Prototype | 0 | ₹0.5–2 L | G0 |
+| 2 — Engineering Prototype | 1 | ₹3–8 L | G1 |
+| 3 — EVT | 2, 3, 4 | ₹9–19 L | G2–G4 |
+| 4 — DVT + Pilot | 5, 6 | ₹13–28 L | G5–G6 |
+| 5 — Commercial MVP | 7 | ₹15–35 L | G7 |
+
 Add salaries for 3–5 people over 14–18 months and a ≥6-month runway buffer beyond the planned pilot date. **Raise against Gate 1 and Gate 5 evidence, not against a deck.**
 
 ## 13. What is deliberately not in this plan
 
-AI/ML of any kind · NILM · three-phase · relay/control · enterprise features · multi-site · carbon and credit scoring · agentic assistants · manufacturing genealogy platforms. All are in [future/](future/) and governed by [15_future_roadmap.md](15_future_roadmap.md). **None of them may become a V1 task without a logged decision that names what it removes.**
+AI/ML of any kind · NILM · three-phase · relay/control · enterprise features · multi-site · carbon and credit scoring · agentic assistants · manufacturing genealogy platforms. All are in [future/](future/) and governed by [future/README.md](future/README.md). **None of them may become a V1 task without a logged decision that names what it removes.**

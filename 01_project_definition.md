@@ -81,7 +81,7 @@ Competitor pricing is recorded as a **validation status**, not a scraped number.
 4. **Offline tolerance.** Keep measuring and buffering when the internet drops.
 5. **No subscription to see your own data.**
 6. **Privacy by design.** Collect only what the function requires; treat occupancy-revealing data as sensitive.
-7. **Execution rule.** *If a document, feature or task does not directly help us build, test, validate or launch V1, it must not block V1 — it moves to [15_future_roadmap.md](15_future_roadmap.md).*
+7. **Execution rule.** *If a document, feature or task does not directly help us build, test, validate or launch V1, it must not block V1 — it moves to [future/README.md](future/README.md).*
 
 ## 7. Product boundaries — what we never claim
 
@@ -123,4 +123,4 @@ Do not publish a top-down market number. Build bottom-up: TAM = eligible single-
 | V2 | Site-3P, solar import/export, multi-site, Pro tier, billing verification |
 | V3+ | Fault candidates, circuit health, NILM research, generative assistant |
 
-Everything past V1 lives in [future/](future/) and is governed by [15_future_roadmap.md](15_future_roadmap.md).
+Everything past V1 lives in [future/](future/) and is governed by [future/README.md](future/README.md).

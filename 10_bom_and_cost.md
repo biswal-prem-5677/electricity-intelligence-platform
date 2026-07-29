@@ -9,6 +9,30 @@
 
 **Every number here is an assumption until a supplier quote or an invoice replaces it.** Figures are in INR, exclusive of GST unless stated. Cost work is done at three volumes because the answer changes shape between them: **100 (pilot) · 1,000 (V1 commercial) · 10,000 (scale)**.
 
+## 1a. Fund by tier, not by total (R23)
+
+> **₹41–94 lakh is the Commercial MVP figure. It is not the entry price, and treating it as "the budget" is the single most common way a hardware project fails to start.**
+
+The first tier costs less than a used car and can kill the project. Each tier has its own go/no-go and its own plausible funding source. **You do not need tier 5 money to begin — you need tier 1 money and the discipline to stop if tier 1 fails.**
+
+| Tier | What it buys | Phases | Cost | Cumulative | Ends at | Plausible source |
+|---|---|---|---|---|---|---|
+| **1 — Bench Prototype** | Eval board + off-the-shelf CTs + borrowed/hired reference meter. Answers *can we measure at all, and how far off are we?* Plus the DB survey and the classification opinion | 0 | **₹50k – 2 L** | ₹0.5–2 L | 🚦 **G0** | Self-funded |
+| **2 — Engineering Prototype** | AFE benchmark, CT characterisation across ≥20 samples, full component selection, isolation review, backend/mobile skeleton | 1 | **₹3 – 8 L** | ₹3.5 – 10 L | 🚦 **G1** | Self / friends & family / small angel |
+| **3 — EVT** | First custom PCB, 20 units, enclosure prototype, EMC pre-scan, first calibration procedure. Firmware and cloud build out alongside | 2, 3, 4 | **₹9 – 19 L** | ₹12.5 – 29 L | 🚦 **G2–G4** | Angel / pre-seed |
+| **4 — DVT + Pilot** | PCB respin, 50 units, **traceable metrology campaign**, safety and EMC pre-compliance, 30-day soak, production fixture, 20–30 site pilot | 5, 6 | **₹13 – 28 L** | ₹25.5 – 57 L | 🚦 **G5–G6** | Seed, raised against Gate 1 evidence |
+| **5 — Commercial MVP** | Full certification, enclosure tooling, PVT lot of 200–500, installer network, support and warranty infrastructure | 7 | **₹15 – 35 L** | **₹41 – 94 L** | 🚦 **G7** | Seed / revenue |
+
+**Three consequences of reading it this way:**
+
+1. **Tier 1 is self-fundable.** The most valuable task in the project — surveying 30 distribution boards — costs about ₹40,000 and needs a camera, a tape measure and persistence. No capital required.
+2. **The cheap tiers carry the killing questions.** Do CTs fit? Can we measure? What does certification cost? All answered under ₹2 lakh. Tiers 4 and 5 spend the real money only after the fatal unknowns are retired.
+3. **Raise against evidence, not against a deck.** Gate 1 (measured accuracy from selected parts) and Gate 5 (traceable metrology report + safety evidence) are the two moments when this project becomes materially more fundable. Time raises to land just after them.
+
+**What you can build yourself versus what needs external capital:** tiers 1 and 2 are a competent hardware engineer with a bench. Tier 3 onward needs an EMS, a lab, and money that does not belong to you.
+
+Salaries are excluded from every figure above and modelled separately in §7.
+
 ## 2. Prototype BOM — Circuit-8, quantity ~20 (EVT)
 
 | Item | Qty | Est. unit ₹ | Est. line ₹ | Note |
