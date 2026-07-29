@@ -80,6 +80,18 @@ A decision recorded without its rejected alternatives will be relitigated by the
 ### R18 — No document without implementation purpose.
 Every file must let someone do something: select a component, write code, start a schematic, stand up a service, or run a test. **A document that only informs belongs in `future/`.**
 
+### R25 — Planning freeze.
+**No new planning or architecture document may be added unless it is required to unblock an implementation task, or to resolve a verified engineering issue discovered during development.**
+
+The 15 core documents are the complete planning set. They are maintained, not extended. Documentation creep is the most comfortable way to avoid engineering, and it is indistinguishable from progress right up until the moment someone asks for a part number.
+
+**The test:** name the implementation task the document unblocks, or the verified issue it resolves. If you cannot, do not write it. Amending an existing document is preferred over creating a new one, always.
+
+### R26 — Commit and push before starting the next task.
+Every completed unit of work — created, modified, corrected or improvised — is committed with a message stating what changed and why, and pushed, **before** the next task begins. No batching, no end-of-day dumps, no work sitting uncommitted on one machine.
+
+A task is not complete until it is pushed. This is what makes the decision log, the assumption ledger and the progress tracker trustworthy: they are only as good as the last push.
+
 ---
 
 ## V. Safety and honesty — the rules with no waiver path
@@ -108,25 +120,62 @@ Optimising an unproven design means paying for two sets of mistakes.
 
 ---
 
-## VII. The current phase
+## VII. The operating mode
 
 > **Planning is frozen. The project is in Implementation Engineering.**
 
-The bottleneck is no longer *what should we build* — it is *how do we build the first working unit*. Under **R18**, from this point forward every new file must be an implementation artifact:
+The bottleneck is no longer *what should we build* — it is *how do we build the first working unit*.
 
-| Order | Artifact | Who must be able to act on it |
-|---|---|---|
-| 1 | Component selection with exact part numbers, alternates, lifecycle status, suppliers | A buyer can raise a purchase order |
-| 2 | Hardware block diagrams | A hardware engineer can partition the design |
-| 3 | Electrical schematics | A PCB designer can start layout |
-| 4 | PCB design | A fab can quote and build |
-| 5 | Firmware implementation | A firmware engineer can write code against a defined interface |
-| 6 | Cloud backend | A backend engineer can create services against a defined contract |
-| 7 | Mobile application | A mobile engineer can build screens against a defined API |
-| 8 | Bench testing | A tester knows exactly what to verify and against what |
-| 9 | Field pilot | An electrician can install and a customer can use it |
+### The standing brief
 
-**No further planning documents will be written.** The 15 core documents are the complete planning set; they are now maintained, not extended.
+Everyone working on this project, human or otherwise, operates under this brief:
+
+> You are the implementation engineering team for a commercial IoT hardware startup. The planning phase is complete. The architecture is frozen.
+>
+> **Do not** redesign the product · introduce features · expand scope · revisit product strategy — unless a **verified engineering blocker** is discovered.
+>
+> Your objective is to transform the frozen architecture into a working commercial prototype. Every output must move the project closer to a manufacturable product. Generate **engineering artifacts, not documentation.**
+>
+> Every recommendation must include: **implementation reasoning · alternatives considered · trade-offs · expected cost · expected engineering effort · validation method.**
+>
+> Do not discuss V2, V3, future AI, NILM or commercial expansion unless the current task explicitly depends on them.
+>
+> Optimise for: **buildability · reliability · safety · manufacturability · verification · execution speed.**
+>
+> The objective is not better documentation. The objective is a working product.
+
+### Engineering Change Request — the only way the architecture moves
+
+When a blocker is found, the architecture is **never silently modified**. Raise an ECR:
+
+| Field | Requirement |
+|---|---|
+| **Blocker** | What specifically does not work, with the evidence that shows it |
+| **Quantification** | Magnitude, cost, schedule impact — a number, not "significant" |
+| **Smallest correction** | The minimum change that clears the blocker. Not the best redesign — the smallest one |
+| **Alternatives** | What else was considered, and why the proposal wins |
+| **Impact** | Which frozen decisions (F1–F8, D-001…), requirements and documents change |
+| **Validation** | How we will know the correction worked |
+| **Approver** | Named. Recorded in [14_decision_log.md](14_decision_log.md) |
+
+An ECR is not a defeat. **Silently absorbing a blocker into the design is.**
+
+### The implementation phases
+
+| Phase | Produces | Complete when | Maps to |
+|---|---|---|---|
+| **1 — Component Engineering** | MCU · metering AFE · CT · power supply · memory · Wi-Fi/BLE module · secure element · protection · connectors. Exact part numbers, alternates, lifecycle status, suppliers | **BOM v1.0 frozen.** A buyer can raise a purchase order | 🚦 G1 |
+| **2 — System Architecture** | Electrical block diagram · communication diagram · power tree · signal flow · mechanical constraints. **No PCB yet** | A hardware engineer can partition the design and a mechanical engineer can bound the enclosure | 🚦 G1 |
+| **3 — Electrical Design** | Schematic: protection · isolation · power supply · AFE · MCU · programming header | Independent schematic and isolation review signed | 🚦 G2 |
+| **4 — PCB** | Stack-up, layout, creepage audit, fab and assembly package | A fab can quote and build | 🚦 G2 |
+| **5 — Firmware** | Drivers · AFE · MQTT · OTA · storage · calibration | All FWR-001…013 with acceptance evidence | 🚦 G3 |
+| **6 — Backend** | MQTT broker · API · storage · authentication | All CLR-001…010 with acceptance evidence | 🚦 G4 |
+| **7 — Mobile** | Installer and customer flows. **Only now** | An electrician commissions a unit using only the app | 🚦 G4 |
+| **8 — Validation** | Bench · field · pilot | 🚦 G5 and 🚦 G6 | 🚦 G5–G6 |
+
+**The ordering is not a preference.** Each phase produces the input the next one cannot start without. Phase 2 exists specifically to stop a schematic being drawn before the power tree and signal flow are settled, which is the most common way a first board gets thrown away.
+
+**Note on Phase 1:** a relay is *not* in the component list and never will be. F6 and R21 prohibit any switching path. If a relay appears in a BOM, schematic or netlist, that is a defect and the review has failed.
 
 ---
 

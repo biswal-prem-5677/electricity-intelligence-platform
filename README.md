@@ -108,13 +108,22 @@ Everything else is in service of those two questions.
 
 ## Current phase — Implementation Engineering
 
-> **Planning is frozen.** The bottleneck is no longer *what should we build* — it is *how do we build the first working unit*.
+> **Planning is frozen (R25).** The bottleneck is no longer *what should we build* — it is *how do we build the first working unit*.
 
-Every new file from here must be an implementation artifact someone can act on:
+The architecture is frozen. Do not redesign the product, add features or expand scope. If a **verified engineering blocker** appears, raise an [ECR](00_execution_principles.md#engineering-change-request--the-only-way-the-architecture-moves) — never modify the architecture silently.
 
-**component selection → block diagrams → schematics → PCB → firmware → cloud → mobile → bench testing → field pilot**
+| Phase | Produces | Done when | Gate |
+|---|---|---|---|
+| **1 Component Engineering** | MCU · AFE · CT · PSU · memory · radio · protection · connectors | **BOM v1.0 frozen** | G1 |
+| **2 System Architecture** | Block diagram · comms diagram · power tree · signal flow · mechanical constraints. *No PCB yet* | Design is partitionable | G1 |
+| **3 Electrical Design** | Schematic: protection, isolation, PSU, AFE, MCU, programming header | Independent review signed | G2 |
+| **4 PCB** | Stack-up, layout, creepage audit, fab package | A fab can quote and build | G2 |
+| **5 Firmware** | Drivers · AFE · MQTT · OTA · storage · calibration | FWR-001…013 evidenced | G3 |
+| **6 Backend** | Broker · API · storage · auth | CLR-001…010 evidenced | G4 |
+| **7 Mobile** | Installer + customer flows. *Only now* | Electrician commissions using only the app | G4 |
+| **8 Validation** | Bench · field · pilot | G5 and G6 passed | G5–G6 |
 
-If a document doesn't move the prototype closer to reality, it belongs in [future/](future/).
+Artifacts live in [`implementation/`](implementation/). Every one must include implementation reasoning, alternatives considered, trade-offs, expected cost, engineering effort and validation method. If a document doesn't move the prototype closer to reality, it belongs in [future/](future/).
 
 ## Working rules
 

@@ -196,6 +196,20 @@ Roughly a 2,700× difference. The live view is what customers love; always-on it
 
 ---
 
+## D-016 — Planning freeze becomes enforceable (R25), and implementation phases are defined
+
+**Decided:** R25 is added to the constitution — no new planning or architecture document may be added unless it unblocks an implementation task or resolves a **verified** engineering issue found during development. R26 is added — every completed unit of work is committed and pushed before the next begins. The implementation sequence is defined as eight phases in [00_execution_principles.md](00_execution_principles.md) §VII, mapped onto the existing gates G1–G6.
+
+**Why:** D-014 declared planning frozen but gave the freeze no enforcement mechanism. A declaration without a test is a preference. R25 supplies the test: *name the implementation task this unblocks, or the verified issue it resolves.* Documentation creep is the most comfortable way to avoid engineering and is indistinguishable from progress right up to the moment someone asks for a part number.
+
+**Also decided:** blockers are handled by **Engineering Change Request**, never by silent modification. An ECR states the blocker with evidence, quantifies it, proposes the *smallest* correction rather than the best redesign, names impacted frozen decisions, defines validation, and carries a named approver.
+
+**Rejected:** an informal "we'll be disciplined about it" freeze; allowing architecture changes to be absorbed into design work without a record.
+
+**Note on the phase list as proposed:** the source list for Phase 1 included a relay among the components to freeze. **It is excluded.** F6 and R21 prohibit any switching path, and a relay appearing in a BOM, schematic or netlist is a defect that means the review failed. No ECR was raised because no blocker exists — the omission is deliberate and load-bearing.
+
+---
+
 ## 2. Frozen architecture decisions F1–F8
 
 Recorded in full in [03_hardware_architecture.md](03_hardware_architecture.md) §3 and governed by D-001.
