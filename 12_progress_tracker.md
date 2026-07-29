@@ -47,7 +47,7 @@ Every work item advances through five stages **in order**. A stage is entered on
 |---|---|---|---|---|---|
 | DB survey (≥30 boards) | ❌ | ➖ | ➖ | ➖ | ❌ |
 | CT selection | ❌ | ❌ | ❌ | ❌ | ❌ |
-| Metering AFE selection | ❌ | ❌ | ❌ | ❌ | ❌ |
+| Metering AFE selection | 🟡 | ❌ | ❌ | ❌ | ❌ |
 | MCU module / flash / secure element | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Isolated voltage reference | ❌ | ❌ | ❌ | ❌ | ❌ |
 | Isolation architecture | ❌ | ❌ | ❌ | ❌ | ❌ |
@@ -58,6 +58,10 @@ Every work item advances through five stages **in order**. A stage is entered on
 | **Accuracy ≤ ±2.0% (HWR-003a)** | ❌ | ❌ | ❌ | ❌ | ❌ |
 | EMC | ❌ | ➖ | ❌ | ❌ | ❌ |
 | Safety / classification | ❌ | ➖ | ❌ | ❌ | ❌ |
+
+**Metering AFE — why Evidence is 🟡 and not ✅:** the evaluation is *specified* ([implementation/01_energy_meter_ic_evaluation.md](implementation/01_energy_meter_ic_evaluation.md)) but nothing has been *measured*. Evidence closes when the benchmark report exists, not when the benchmark plan does (R13). Leading candidate ADE7816; **not selected.**
+
+**⚠ Watch item — potential ECR:** whether the ADE7816 provides per-channel reactive power. PRD-001, CLR-002, the [06](06_cloud_backend_srs.md) §3 frame and MOB-003 all assume `reactivePowerVAR` and `powerFactor`. Resolvable from the datasheet in ~1 day, at zero cost, and it may eliminate a candidate before any board is ordered — **do it first.**
 
 ### Firmware
 
@@ -173,7 +177,7 @@ Every assumption is a debt. It is closed by evidence, not by repetition.
 
 | ID | Decision | Needed by | Owner |
 |---|---|---|---|
-| OPEN-1 | Metering AFE part selection | Gate 1 | HW |
+| OPEN-1 | Metering AFE part selection — spec'd in [IMPL-01](implementation/01_energy_meter_ic_evaluation.md), awaiting measured data | Gate 1 | HW |
 | OPEN-2 | CT part and second source | Gate 1 | HW |
 | OPEN-3 | MET-006 field CT replacement path | Gate 1 | HW, PM |
 | OPEN-4 | Metrology bench: buy vs rent vs lab hire | Gate 0 | HW, PM |

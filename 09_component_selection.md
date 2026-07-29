@@ -24,6 +24,8 @@ Every critical part is chosen against: **function fit · India availability and 
 
 **EVT deliverable (blocking):** a benchmark board comparing at minimum ADE7816 against the incumbent ATM90E32 across accuracy at low current, phase-error correction capability, per-channel calibration support, SPI throughput for 9 channels at the required sample rate, cost at 1k/10k, and India lead time. **Selection is made from measured data, not datasheet reading.**
 
+> **The evaluation is specified in [implementation/01_energy_meter_ic_evaluation.md](implementation/01_energy_meter_ic_evaluation.md)** — channel arithmetic, candidate analysis, cost per channel, the benchmark matrix and the Gate 1 pass criteria. That artifact carries a **potential ECR** (§6): whether the ADE7816 provides per-channel reactive power, which PRD-001 and the [06](06_cloud_backend_srs.md) §3 frame both assume.
+
 ## 3. Current transformers — the highest-risk part
 
 | Criterion | Requirement |

@@ -21,7 +21,7 @@ No relay or any switching path · no three-phase · no AI, ML or NILM · no ente
 
 > **If a document, feature or task does not directly help us build, test, validate or launch Version 1, it must not block Version 1. It goes to [future/](future/).**
 
-One of 24 rules in **[00_execution_principles.md](00_execution_principles.md)** — the project's constitution, which outranks every other document here.
+One of 26 rules in **[00_execution_principles.md](00_execution_principles.md)** — the project's constitution, which outranks every other document here.
 
 ## Start here
 
@@ -38,7 +38,7 @@ One of 24 rules in **[00_execution_principles.md](00_execution_principles.md)** 
 
 | # | Document | Owner |
 |---|---|---|
-| 00 | [Execution Principles](00_execution_principles.md) 🔒 **CONSTITUTIONAL** — R1–R24 | Founder |
+| 00 | [Execution Principles](00_execution_principles.md) 🔒 **CONSTITUTIONAL** — R1–R26 | Founder |
 | 01 | [Project Definition](01_project_definition.md) — customer, segment, competition, positioning | Product |
 | 02 | [Product Requirements](02_product_requirements.md) — MoSCoW scope freeze | Product |
 | 03 | [Hardware Architecture](03_hardware_architecture.md) 🔒 **FROZEN** — F1–F8 | Hardware |
@@ -52,7 +52,7 @@ One of 24 rules in **[00_execution_principles.md](00_execution_principles.md)** 
 | 11 | [Project Plan](11_project_plan.md) — phases 0–7, tasks, gates | Founder |
 | 12 | [Progress Tracker](12_progress_tracker.md) — the only status document | Founder |
 | 13 | [Risk Register](13_risk_register.md) — R-01…R-20 | Founder |
-| 14 | [Decision Log](14_decision_log.md) — D-001…D-015, F1–F8 | Founder |
+| 14 | [Decision Log](14_decision_log.md) — D-001…D-016, F1–F8 | Founder |
 
 **These 15 are the complete planning set.** They are maintained, not extended — see *Current phase* below.
 
@@ -124,6 +124,12 @@ The architecture is frozen. Do not redesign the product, add features or expand 
 | **8 Validation** | Bench · field · pilot | G5 and G6 passed | G5–G6 |
 
 Artifacts live in [`implementation/`](implementation/). Every one must include implementation reasoning, alternatives considered, trade-offs, expected cost, engineering effort and validation method. If a document doesn't move the prototype closer to reality, it belongs in [future/](future/).
+
+| Artifact | Closes | Status |
+|---|---|---|
+| [IMPL-01 — Energy Metering AFE Evaluation](implementation/01_energy_meter_ic_evaluation.md) | OPEN-1 | 🟡 Evaluation specified; awaiting measured data |
+
+**The first irreversible decision is the metering AFE.** Leading candidate **ADE7816** — two parts cover all 9 channels behind one shared voltage reference, against three parts for every 3-phase-oriented alternative. It is not selected: selection is made from benchmark data, and one datasheet question (per-channel reactive power) may raise an ECR before any board is ordered.
 
 ## Working rules
 
