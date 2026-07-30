@@ -27,6 +27,7 @@ One of 26 rules in **[00_execution_principles.md](00_execution_principles.md)** 
 
 | If you want to… | Read |
 |---|---|
+| Understand the whole product in one sitting, with zero prior context | **[Master srs.md](Master%20srs.md)** |
 | Know the rules everything else obeys | **[00_execution_principles.md](00_execution_principles.md)** 🔒 |
 | Understand the product and the customer | [01_project_definition.md](01_project_definition.md) |
 | Know what V1 does and does not do | [02_product_requirements.md](02_product_requirements.md) |
@@ -55,6 +56,8 @@ One of 26 rules in **[00_execution_principles.md](00_execution_principles.md)** 
 | 14 | [Decision Log](14_decision_log.md) — D-001…D-016, F1–F8 | Founder |
 
 **These 15 are the complete planning set.** They are maintained, not extended — see *Current phase* below.
+
+**[Master srs.md](Master%20srs.md)** is a consolidated, standalone read-through of those 15 — product, build workflow, build and runtime pipelines, hardware, software architecture, data storage and rationale in one file. It is a *derived summary, not a 16th planning document*: where it disagrees with a core document, the core document wins. It also carries two feature proposals (monthly budget target, equipment-deviation alert with cost) that are **not** in the frozen scope and require a recorded decision in [14_decision_log.md](14_decision_log.md) before they count as V1 work.
 
 ## [`future/`](future/) — parked, not cancelled
 
